@@ -1,0 +1,1 @@
+A robust GUI wrapper for FFmpeg that can swiftly process and convert virtually any media file.
