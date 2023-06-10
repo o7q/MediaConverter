@@ -29,14 +29,17 @@ namespace MediaConverter
         {
             EnableLoadingIcon(true);
 
+            // create necessary directories
             Directory.CreateDirectory("MediaConverter\\config");
             Directory.CreateDirectory("MediaConverter\\queue");
             Directory.CreateDirectory("MediaConverter\\working");
             Directory.CreateDirectory("Converts");
 
+            // read configuration from file if it exists
             if (File.Exists("MediaConverter\\config\\config.mc"))
                 config = ReadConfig();
 
+            // create a default config file if it doesn't exist
             if (!File.Exists("MediaConverter\\config\\_base"))
             {
                 config.THEME_COLOR_R = 30;
@@ -46,11 +49,14 @@ namespace MediaConverter
                 File.Create("MediaConverter\\config\\_base");
             }
 
+            // set theme color based on the config
             themeColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
-
+            // set the background color of the main panel
             MainPanel.BackColor = themeColor;
 
+            // refresh the queue list
             RefreshQueue(true);
+            // restore selected items in the queue list
             if (string.IsNullOrEmpty(config.QUEUE_ITEM_SELECTIONS) == false)
             {
                 string[] selectedItems = config.QUEUE_ITEM_SELECTIONS.Split('ʃ');
@@ -67,8 +73,10 @@ namespace MediaConverter
                 }
             }
 
+            // update the label displaying the number of selected items
             UpdateSelectedLabel();
 
+            // set the version label text and position
             VersionLabel.Text = "MediaConverter " + VERSION;
             VersionLabel.Location = new Point(Width - (VersionLabel.Width + 33), VersionLabel.Location.Y);
 
@@ -129,6 +137,7 @@ namespace MediaConverter
         private void QueueListBox_DrawItem(object sender, DrawItemEventArgs e)
         {
             // code forked from: https://stackoverflow.com/a/3709452
+            // custom drawing for queue list box items
             e.DrawBackground();
             bool selected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
 
@@ -154,6 +163,7 @@ namespace MediaConverter
 
         private void QueueConvertAllButton_Click(object sender, EventArgs e)
         {
+            // convert all media items in the queue
             if (QueueListBox.Items.Count == 0) return;
 
             EnableLoadingIcon(true);
@@ -169,6 +179,7 @@ namespace MediaConverter
 
         private void QueueConvertSelectedButton_Click(object sender, EventArgs e)
         {
+            // convert selected media items in the queue
             if (QueueListBox.SelectedItems.Count == 0) return;
 
             EnableLoadingIcon(true);
@@ -183,6 +194,7 @@ namespace MediaConverter
         {
             EnableLoadingIcon(true);
 
+            // open file dialog to select media files
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "All Files (*.*)|*.*";
             openFileDialog.Multiselect = true;
@@ -204,6 +216,7 @@ namespace MediaConverter
         {
             EnableLoadingIcon(true);
 
+            // open folder dialog to select a folder
             using (OpenFileDialog selectFolderDialog = new OpenFileDialog())
             {
                 selectFolderDialog.Multiselect = false;
@@ -288,10 +301,12 @@ namespace MediaConverter
 
             EnableLoadingIcon(true);
 
+            // read the settings of the selected media item
             MediaItemData[] mediaSettings = new MediaItemData[1];
             mediaSettings[0] = ReadMediaItem(QueueListBox.SelectedItem.ToString());
+            if (mediaSettings[0].INPUT_FILE == null) return;
 
-            // display window with mediaSettings
+            // display a window to edit the settings of the single media item
             MediaItemEditor mediaEditor = new MediaItemEditor(mediaSettings, themeColor);
             mediaEditor.Show();
 
@@ -304,6 +319,7 @@ namespace MediaConverter
 
             EnableLoadingIcon(true);
 
+            // read the settings of the selected media items
             MediaItemData[] mediaSettings = new MediaItemData[QueueListBox.SelectedItems.Count];
 
             int index = 0;
@@ -312,8 +328,9 @@ namespace MediaConverter
                 mediaSettings[index] = ReadMediaItem(item);
                 index++;
             }
+            if (mediaSettings[0].INPUT_FILE == null) return;
 
-            // display key with keyData_ settings
+            // display a window to edit the settings of the selected media items
             MediaItemEditor mediaEditor = new MediaItemEditor(mediaSettings, themeColor);
             mediaEditor.Show();
 
@@ -338,7 +355,7 @@ namespace MediaConverter
                 string itemFile = itemToRemove.ToString();
 
                 // delete corresponding mediaitem file
-                File.Delete("MediaConverter\\queue\\" + itemFile + ".mediaitem");
+                File.Delete("MediaConverter\\queue\\" + itemFile + ".mc_item");
             }
 
             UpdateSelectedLabel();
@@ -359,17 +376,19 @@ namespace MediaConverter
         {
             var itemsToRemove = new List<object>();
 
+            // create a list of selected items to remove
             foreach (var selectedItem in QueueListBox.SelectedItems)
                 itemsToRemove.Add(selectedItem);
 
+            // remove selected items from the queue and delete associated files
             foreach (var selectedItem in itemsToRemove)
             {
                 QueueListBox.Items.Remove(selectedItem);
                 string itemFile = selectedItem.ToString();
-                File.Delete("MediaConverter\\queue\\" + itemFile + ".mediaitem");
+                File.Delete("MediaConverter\\queue\\" + itemFile + ".mc_item");
             }
 
-            // set selectedindex to 0 if there is at least 1 preset
+            // set the selected index to 0 if there is at least 1 item in the queue
             if (QueueListBox.Items.Count >= 1 == true)
                 QueueListBox.SelectedIndex = 0;
 
@@ -383,6 +402,8 @@ namespace MediaConverter
             int maxOpens = 10;
             int openIndex = 1;
             string[] mediaItems = SelectedItemsToArray(QueueListBox.SelectedItems);
+
+            // open the media locations in Windows Explorer, limited to a maximum number of opens
             foreach (string mediaItem in mediaItems)
             {
                 if (openIndex == maxOpens)
@@ -396,11 +417,14 @@ namespace MediaConverter
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
+            // open the settings editor window
             SettingsEditor settingsEditor = new SettingsEditor(config);
             settingsEditor.ShowDialog();
 
+            // read the updated configuration
             config = ReadConfig();
 
+            // update the theme color and panel background color
             themeColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
             MainPanel.BackColor = themeColor;
         }
@@ -451,6 +475,7 @@ namespace MediaConverter
         {
             ListBox.SelectedObjectCollection selectedItems = QueueListBox.SelectedItems;
 
+            // move the selected queue items down one position
             for (int i = selectedItems.Count - 1; i >= 0; i--)
             {
                 int selectedIndex = QueueListBox.SelectedIndices[i];
@@ -470,6 +495,7 @@ namespace MediaConverter
         {
             ListBox.SelectedObjectCollection selectedItems = QueueListBox.SelectedItems;
 
+            // move the selected queue items up one position
             for (int i = 0; i < selectedItems.Count; i++)
             {
                 int selectedIndex = QueueListBox.SelectedIndices[i];
@@ -502,7 +528,7 @@ namespace MediaConverter
         }
         private void QueueListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            // Deselect the current item when double-clicked
+            // deselect the current item when double-clicked
             int clickedIndex = QueueListBox.IndexFromPoint(e.Location);
             if (clickedIndex == -1) return;
 
@@ -511,7 +537,7 @@ namespace MediaConverter
             MediaItemData[] mediaSettings = new MediaItemData[1];
             mediaSettings[0] = ReadMediaItem(QueueListBox.Items[clickedIndex].ToString());
 
-            // Deselect the current item when double-clicked
+            // deselect the current item when double-clicked
             if (queueListBoxWasSelected == true)
                 QueueListBox.SetSelected(clickedIndex, true);
             else
@@ -572,12 +598,12 @@ namespace MediaConverter
 
                 // CODEC SETTINGS
                 mediaItem.OUTPUT_FORMAT = "mp4";
-                mediaItem.OUTPUT_FORMAT_TYPE = "STANDARD";
+                mediaItem.OUTPUT_FORMAT_TYPE = "VIDEO_OR_AUDIO_BASIC";
                 mediaItem.OUTPUT_FORMAT_PREPROCESSOR = "mp4";
                 mediaItem.OUTPUT_FORMAT_IS_IMAGE_SEQUENCE = false;
 
-                mediaItem.OUTPUT_VIDEO_CODEC = "h264_nvenc";
-                mediaItem.OUTPUT_AUDIO_CODEC = "libmp3lame";
+                mediaItem.OUTPUT_VIDEO_CODEC = "libx264";
+                mediaItem.OUTPUT_AUDIO_CODEC = "aac";
 
                 mediaItem.OUTPUT_VIDEO_BITRATE = "100M";
                 mediaItem.OUTPUT_AUDIO_BITRATE = "320K";
@@ -671,7 +697,7 @@ namespace MediaConverter
                 sb_item_order.Append("ʃ");
             }
 
-            // Remove the last "|" character
+            // remove the last 'ʃ' character
             if (sb_item_order.Length > 0)
                 sb_item_order.Length--;
 
@@ -687,7 +713,7 @@ namespace MediaConverter
                 sb_item_selections.Append("ʃ");
             }
 
-            // Remove the last "|" character
+            // remove the last 'ʃ' character
             if (sb_item_selections.Length > 0)
                 sb_item_selections.Length--;
 

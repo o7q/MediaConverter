@@ -56,7 +56,6 @@
     <Compile Include="Includes\Tools\Managers\ConvertManager.cs" />
     <Compile Include="Includes\Tools\Forms.cs" />
     <Compile Include="Includes\Tools\Managers\MediaItemManager.cs" />
-    <Compile Include="Includes\Tools\Numbers.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

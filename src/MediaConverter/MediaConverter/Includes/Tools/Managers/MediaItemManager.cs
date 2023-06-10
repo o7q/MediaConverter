@@ -18,15 +18,17 @@ namespace MediaConverter.Tools.Managers
                 sb.Append("\n");
             }
             sb.Length--;
-            File.WriteAllText("MediaConverter\\queue\\" + mediaItem + ".mediaitem", sb.ToString());
+            File.WriteAllText("MediaConverter\\queue\\" + mediaItem + ".mc_item", sb.ToString());
         }
 
         public static MediaItemData ReadMediaItem(string mediaItem)
         {
             MediaItemData mediaData = new MediaItemData();
 
+            if (File.Exists("MediaConverter\\queue\\" + mediaItem + ".mc_item") == false) return mediaData;
+
             // load data from file
-            string mediaItemFile = File.ReadAllText("MediaConverter\\queue\\" + mediaItem + ".mediaitem");
+            string mediaItemFile = File.ReadAllText("MediaConverter\\queue\\" + mediaItem + ".mc_item");
             string[] mediaItemSetting = mediaItemFile.Split('\n');
 
             for (int i = 0; i < mediaItemSetting.Length; i++)

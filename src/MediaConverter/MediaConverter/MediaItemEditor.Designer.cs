@@ -114,10 +114,8 @@
             "[Image]",
             "png",
             "jpg",
-            "bmp",
-            "tif",
-            "gif",
-            "ico"});
+            "ico",
+            "gif"});
             this.OutputFormatComboBox.Location = new System.Drawing.Point(8, 58);
             this.OutputFormatComboBox.Name = "OutputFormatComboBox";
             this.OutputFormatComboBox.Size = new System.Drawing.Size(121, 21);
@@ -141,7 +139,7 @@
             this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(128)))), ((int)(((byte)(245)))));
+            this.SaveButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(130)))), ((int)(((byte)(230)))));
             this.SaveButton.Location = new System.Drawing.Point(146, 290);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(62, 32);
@@ -617,7 +615,7 @@
             this.PreviewButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.PreviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreviewButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(102)))), ((int)(((byte)(196)))));
+            this.PreviewButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(104)))), ((int)(((byte)(184)))));
             this.PreviewButton.Location = new System.Drawing.Point(208, 290);
             this.PreviewButton.Name = "PreviewButton";
             this.PreviewButton.Size = new System.Drawing.Size(62, 32);

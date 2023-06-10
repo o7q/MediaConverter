@@ -240,8 +240,6 @@ namespace MediaConverter
                     break;
                 case "png":
                 case "jpg":
-                case "bmp":
-                case "tif":
                     OutputIsImageSequenceCheckBox.Enabled = true;
                     OutputVideoCodecComboBox.Enabled = false;
                     OutputAudioCodecComboBox.Enabled = false;
@@ -291,6 +289,7 @@ namespace MediaConverter
 
         private void OutputFilePathButton_Click(object sender, EventArgs e)
         {
+            // open a file dialog for the output file path selection
             using (OpenFileDialog selectFolderDialog = new OpenFileDialog())
             {
                 selectFolderDialog.Multiselect = false;
@@ -310,6 +309,8 @@ namespace MediaConverter
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            // if in batch mode, loop through each selected media and apply the same settings to them
+            // if not not batch mode, save changes to only the first media index
             if (isBulk == true)
             {
                 for (int i = 0; i < mediaSettings.Length; i++)
@@ -369,8 +370,6 @@ namespace MediaConverter
                     break;
                 case "png":
                 case "jpg":
-                case "bmp":
-                case "tif":
                     mediaSettings[itemIndex].OUTPUT_FORMAT_TYPE = "IMAGE_BASIC";
                     mediaSettings[itemIndex].OUTPUT_FORMAT_PREPROCESSOR = OutputFormatComboBox.Text;
                     break;

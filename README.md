@@ -10,17 +10,24 @@
 
 <img src="assets/images/program.png">
 
-<!-- ---
+---
 
 # Features
-* Video & Audio codec remuxxing
-* Media editor including the ability to resize
-* Intuitive UI -->
+* Video, audio, and image processing
+* Media editor including the ability to reformat, remux, resize, posturize time, trim, and more
+* A fast and responsive UI
+* Power-user friendly with built-in hotkeys
+<!-- * Unrestricted access to FFmpeg's features -->
+
+## Tips
+* You can double click a queue item to edit it
+* You can use your keyboard to quickly navigate the menus, hover over a control to see if it has a designated keyboard hotkey
+* Even if a format or codec is not listed, you can access it by simply typing in its name
 
 ---
 
 # Overview
-MediaConverter takes in arguments and auto-configures a batch script for FFmpeg. \
+MediaConverter takes in arguments and configures a batch script for FFmpeg. \
 This program takes inspiration from Adobe Media Encoder. I was tired of the clunky and slow UI of Media Encoder so I made this much snappier version that has similar features alongside some of my own features.
 
 ### **Powered by**

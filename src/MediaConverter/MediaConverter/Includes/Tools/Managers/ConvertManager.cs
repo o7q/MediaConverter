@@ -37,8 +37,8 @@ namespace MediaConverter.Tools.Managers
             MediaItemData mediaItem = ReadMediaItem(item.ToString());
 
             scriptBraid += "\ntitle MediaConverter " + VERSION + "  [" + currentMediaItem + "/" + totalMediaItems + "]  :  " + item + "\n" +
-                             "echo.\n" +
-                             "echo.";
+                           "echo.\n" +
+                           "echo.";
 
             #region codecManager
             string script_codecManager = "";
@@ -132,7 +132,7 @@ namespace MediaConverter.Tools.Managers
                         case true:
                             scriptBraid += script_preprocessor +
                                            "mkdir \"final\"\n" +
-                                           "\"..\\ffmpeg.exe\" -loglevel verbose -y -i \"tmp0.avi\" \"final\\" + mediaItem.OUTPUT_FILE_NAME + ".%%d." + mediaItem.OUTPUT_FORMAT + "\"" +
+                                           "\"..\\ffmpeg.exe\" -loglevel verbose -y -i \"" + media_inputFilePath + "\" \"final\\" + mediaItem.OUTPUT_FILE_NAME + ".%%d." + mediaItem.OUTPUT_FORMAT + "\"" +
                                            script_finalize_directory;
                             break;
                         case false:
@@ -145,12 +145,12 @@ namespace MediaConverter.Tools.Managers
                 case "IMAGE_GIF":
                     scriptBraid += script_preprocessor +
                                    "\"..\\ffmpeg.exe\" -loglevel verbose -y -i \"" + media_inputFilePath + "\" -vf palettegen \"gif_palette.png\"\n" +
-                                   "\"..\\ffmpeg.exe\" -loglevel verbose -y -i \"" + media_inputFilePath + "\" -i \"gif_palette.png\" -lavfi \"paletteuse\" \"final.gif" +
+                                   "\"..\\ffmpeg.exe\" -loglevel verbose -y -i \"" + media_inputFilePath + "\" -i \"gif_palette.png\" -lavfi \"paletteuse\" \"final.gif\"" +
                                    script_finalize;
                     break;
                 case "IMAGE_ICO":
                     scriptBraid += script_preprocessor +
-                                   "\"..\\ffmpeg.exe\" -loglevel verbose -y -i \"" + media_inputFilePath + "\" -vf \"scale=256:256,setsar=1\" \"final.ico" +
+                                   "\"..\\ffmpeg.exe\" -loglevel verbose -y -i \"" + media_inputFilePath + "\" -vf \"scale=256:256,setsar=1\" \"final.ico\"" +
                                    script_finalize;
                     break;
             }
