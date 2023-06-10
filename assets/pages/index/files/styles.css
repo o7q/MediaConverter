@@ -1,0 +1,87 @@
+@font-face
+{
+    font-family: KarrikRegular;
+    src: url(../../../fonts/karrikRegular.ttf);
+}
+
+::-webkit-scrollbar
+{
+    width: 0.75em;
+}
+::-webkit-scrollbar-thumb
+{
+    border-radius: 0px;
+    background: #1C1C1C;
+}
+::-webkit-scrollbar-track
+{
+    background: #0F0F0F;
+}
+
+body
+{
+    text-align: center;
+    background-image: linear-gradient(#1C1C1C, #0F0F0F);
+}
+
+.headDesc
+{
+    margin: 0 auto;
+    font-family: KarrikRegular;
+    font-size: 15px;
+    inline-size: 400px;
+    color: #FFFFFF;
+}
+
+.headProgram
+{
+    border: 3px solid #282928;
+    border-radius: 3px;
+}
+
+.downloadButton
+{
+    padding: 10px 25px;
+    background-image: linear-gradient(#051526, #0A2B4C);
+    border: 3px solid #1E82E6;
+    border-radius: 10px;
+    font-family: KarrikRegular;
+    font-size: 30px;
+    color: #1E82E6;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+}
+.downloadButton:hover
+{
+    color: #61A7ED;
+    border: 3px solid #61A7ED;
+    box-shadow: 0 5px 15px #61A7ED30;
+}
+
+.downloadButtonAll
+{
+    position: relative;
+    top: 15px;
+    font-family: KarrikRegular;
+    color: #1868B8;
+    text-decoration: none;
+}
+
+.copyrightText
+{
+    font-family: KarrikRegular;
+    font-size: 10px;
+    color: #696969;
+    padding-top: 5px;
+}
+
+/* functions */
+.disablePointer
+{
+    cursor: default;
+}
+
+.disableSelect
+{
+    user-select: none;
+}

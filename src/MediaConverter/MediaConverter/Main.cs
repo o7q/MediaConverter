@@ -49,6 +49,8 @@ namespace MediaConverter
                 File.Create("MediaConverter\\config\\_base");
             }
 
+            WriteConfig(config);
+
             // set theme color based on the config
             themeColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
             // set the background color of the main panel
