@@ -1,6 +1,6 @@
 <img src="assets/images/banner.png">
 
-# [<b>>> Download Latest</b>](https://github.com/o7q/MediaConverter/releases/download/v1.0.1.0/MediaConverter.v1.0.1.0.zip)
+# [<b>>> Download Latest</b>](https://github.com/o7q/MediaConverter/releases/download/v1.1.0.0/MediaConverter.v1.1.0.0.zip)
 ### Welcome! MediaConverter is a simple, lightning-fast, GUI based tool that removes the hassle of using FFmpeg through a command-line.
 
 ### **NOTE:** This program is still very early in development! Many more features will be added. Stay tuned!
