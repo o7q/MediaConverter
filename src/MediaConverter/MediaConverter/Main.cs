@@ -627,7 +627,7 @@ namespace MediaConverter
 
             // display window with mediaSettings
             MediaItemEditor mediaEditor = new MediaItemEditor(mediaSettings, config);
-            mediaEditor.Show();
+            mediaEditor.ShowDialog();
 
             UpdateSelectedLabel();
 
