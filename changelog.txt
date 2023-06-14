@@ -1,2 +1,7 @@
+~ v1.1.0.0
+- Added a feature to rename items in the queue
+- Updated UI visuals
+- Updated config filetype and generation
+
 ~ v1.0.1.0
 - Fixed a crash relating to the settings menu closing

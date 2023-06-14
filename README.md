@@ -50,8 +50,8 @@ FFmpeg: https://ffmpeg.org
         - **Deselect All Button** Deselects all media in the queue
         - **Invert Selection Button** Inverts the selection
     - **Editor Buttons**
-        - **Edit Single Button** Opens the media editor with only the single selected media
-        - **Edit Batch Button** Opens the media editor with all of the selected media, allowing the user to edit them in bulk
+        - **Edit Button** Opens the media editor with the selected media
+        - **Rename Button** Opens the media renamer with the selected media
     - **Open Media Location Button** Opens the selected media's location in Windows Explorer (limited to 10 selections)
     - **Settings Button** Opens the settings window
 - **Queue Box**

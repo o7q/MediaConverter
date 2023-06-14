@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using static MediaConverter.Data.Structure.ConfigStructure;
 
 namespace MediaConverter.Tools
 {
@@ -39,6 +40,14 @@ namespace MediaConverter.Tools
 
             e.Graphics.DrawString(combo.Items[e.Index].ToString(), e.Font, new SolidBrush(textColor), new Point(e.Bounds.X, e.Bounds.Y));
             //
+        }
+
+        public static Tuple<Color, Color, Color> CalculateThemeButtonColors(ConfigBase config)
+        {
+            Color foreColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
+            Color backColor = Color.FromArgb(255, foreColor.R / 3, foreColor.G / 3, foreColor.B / 3);
+            Color borderColor = Color.FromArgb(255, (int)(backColor.R * 1.5), (int)(backColor.G * 1.5), (int)(backColor.B * 1.5));
+            return Tuple.Create(foreColor, backColor, borderColor);
         }
     }
 }

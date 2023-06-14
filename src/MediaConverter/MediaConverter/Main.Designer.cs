@@ -42,12 +42,12 @@
             this.QueueConvertAllButton = new System.Windows.Forms.Button();
             this.QueueConvertSelectedButton = new System.Windows.Forms.Button();
             this.Menubar2Panel = new System.Windows.Forms.Panel();
+            this.QueueRenameButton = new System.Windows.Forms.Button();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.QueueDeselectAllButton = new System.Windows.Forms.Button();
             this.QueueSelectInvertButton = new System.Windows.Forms.Button();
             this.QueueSelectAllButton = new System.Windows.Forms.Button();
-            this.QueueEditSingleButton = new System.Windows.Forms.Button();
-            this.QueueEditBulkButton = new System.Windows.Forms.Button();
+            this.QueueEditButton = new System.Windows.Forms.Button();
             this.QueueOpenMediaLocationButton = new System.Windows.Forms.Button();
             this.QueueRemoveAllButton = new System.Windows.Forms.Button();
             this.QueueRemoveSelectedButton = new System.Windows.Forms.Button();
@@ -89,6 +89,7 @@
             this.QueueListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.QueueListBox_DragEnter);
             this.QueueListBox.DragLeave += new System.EventHandler(this.QueueListBox_DragLeave);
             this.QueueListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.QueueListBox_MouseDoubleClick);
+            this.QueueListBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.QueueListBox_MouseDown);
             this.QueueListBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.QueueListBox_PreviewKeyDown);
             // 
             // TitlebarPanel
@@ -116,9 +117,10 @@
             // 
             // MinimizeButton
             // 
+            this.MinimizeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.MinimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MinimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimizeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.MinimizeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.MinimizeButton.Location = new System.Drawing.Point(507, 2);
             this.MinimizeButton.Name = "MinimizeButton";
             this.MinimizeButton.Size = new System.Drawing.Size(25, 23);
@@ -129,9 +131,10 @@
             // 
             // CloseButton
             // 
+            this.CloseButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.CloseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.CloseButton.Location = new System.Drawing.Point(532, 2);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(25, 23);
@@ -226,12 +229,12 @@
             // Menubar2Panel
             // 
             this.Menubar2Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.Menubar2Panel.Controls.Add(this.QueueRenameButton);
             this.Menubar2Panel.Controls.Add(this.SettingsButton);
             this.Menubar2Panel.Controls.Add(this.QueueDeselectAllButton);
             this.Menubar2Panel.Controls.Add(this.QueueSelectInvertButton);
             this.Menubar2Panel.Controls.Add(this.QueueSelectAllButton);
-            this.Menubar2Panel.Controls.Add(this.QueueEditSingleButton);
-            this.Menubar2Panel.Controls.Add(this.QueueEditBulkButton);
+            this.Menubar2Panel.Controls.Add(this.QueueEditButton);
             this.Menubar2Panel.Controls.Add(this.QueueOpenMediaLocationButton);
             this.Menubar2Panel.Controls.Add(this.QueueRemoveAllButton);
             this.Menubar2Panel.Controls.Add(this.QueueRemoveSelectedButton);
@@ -239,6 +242,21 @@
             this.Menubar2Panel.Name = "Menubar2Panel";
             this.Menubar2Panel.Size = new System.Drawing.Size(27, 342);
             this.Menubar2Panel.TabIndex = 0;
+            // 
+            // QueueRenameButton
+            // 
+            this.QueueRenameButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.QueueRenameButton.BackgroundImage = global::MediaConverter.Properties.Resources.rename_button;
+            this.QueueRenameButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.QueueRenameButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.QueueRenameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.QueueRenameButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(237)))), ((int)(((byte)(177)))));
+            this.QueueRenameButton.Location = new System.Drawing.Point(4, 98);
+            this.QueueRenameButton.Name = "QueueRenameButton";
+            this.QueueRenameButton.Size = new System.Drawing.Size(20, 20);
+            this.QueueRenameButton.TabIndex = 4;
+            this.QueueRenameButton.UseVisualStyleBackColor = false;
+            this.QueueRenameButton.Click += new System.EventHandler(this.QueueRenameButton_Click);
             // 
             // SettingsButton
             // 
@@ -297,35 +315,20 @@
             this.QueueSelectAllButton.UseVisualStyleBackColor = true;
             this.QueueSelectAllButton.Click += new System.EventHandler(this.QueueSelectAllButton_Click);
             // 
-            // QueueEditSingleButton
+            // QueueEditButton
             // 
-            this.QueueEditSingleButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.QueueEditSingleButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("QueueEditSingleButton.BackgroundImage")));
-            this.QueueEditSingleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.QueueEditSingleButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.QueueEditSingleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.QueueEditSingleButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(225)))), ((int)(((byte)(118)))));
-            this.QueueEditSingleButton.Location = new System.Drawing.Point(4, 77);
-            this.QueueEditSingleButton.Name = "QueueEditSingleButton";
-            this.QueueEditSingleButton.Size = new System.Drawing.Size(20, 20);
-            this.QueueEditSingleButton.TabIndex = 3;
-            this.QueueEditSingleButton.UseVisualStyleBackColor = false;
-            this.QueueEditSingleButton.Click += new System.EventHandler(this.QueueEditSingleButton_Click);
-            // 
-            // QueueEditBulkButton
-            // 
-            this.QueueEditBulkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.QueueEditBulkButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("QueueEditBulkButton.BackgroundImage")));
-            this.QueueEditBulkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.QueueEditBulkButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.QueueEditBulkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.QueueEditBulkButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(237)))), ((int)(((byte)(177)))));
-            this.QueueEditBulkButton.Location = new System.Drawing.Point(4, 98);
-            this.QueueEditBulkButton.Name = "QueueEditBulkButton";
-            this.QueueEditBulkButton.Size = new System.Drawing.Size(20, 20);
-            this.QueueEditBulkButton.TabIndex = 4;
-            this.QueueEditBulkButton.UseVisualStyleBackColor = false;
-            this.QueueEditBulkButton.Click += new System.EventHandler(this.QueueEditBulkButton_Click);
+            this.QueueEditButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.QueueEditButton.BackgroundImage = global::MediaConverter.Properties.Resources.edit_button;
+            this.QueueEditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.QueueEditButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.QueueEditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.QueueEditButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(225)))), ((int)(((byte)(118)))));
+            this.QueueEditButton.Location = new System.Drawing.Point(4, 77);
+            this.QueueEditButton.Name = "QueueEditButton";
+            this.QueueEditButton.Size = new System.Drawing.Size(20, 20);
+            this.QueueEditButton.TabIndex = 3;
+            this.QueueEditButton.UseVisualStyleBackColor = false;
+            this.QueueEditButton.Click += new System.EventHandler(this.QueueEditButton_Click);
             // 
             // QueueOpenMediaLocationButton
             // 
@@ -373,7 +376,7 @@
             // 
             // MainPanel
             // 
-            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(130)))), ((int)(((byte)(230)))));
+            this.MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(0)))));
             this.MainPanel.Controls.Add(this.QueueRefreshButton);
             this.MainPanel.Controls.Add(this.QueueSelectionMoveDownButton);
             this.MainPanel.Controls.Add(this.QueueSelectionMoveUpButton);
@@ -509,8 +512,7 @@
         private System.Windows.Forms.Button QueueAddMediaButton;
         private System.Windows.Forms.Button QueueOpenMediaLocationButton;
         private System.Windows.Forms.Button QueueSelectionMoveDownButton;
-        private System.Windows.Forms.Button QueueEditBulkButton;
-        private System.Windows.Forms.Button QueueEditSingleButton;
+        private System.Windows.Forms.Button QueueEditButton;
         private System.Windows.Forms.Button QueueSelectAllButton;
         private System.Windows.Forms.Button QueueSelectInvertButton;
         private System.Windows.Forms.Button QueueDeselectAllButton;
@@ -523,5 +525,6 @@
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.Button QueueSelectionMoveUpButton;
         private System.Windows.Forms.Button QueueRefreshButton;
+        private System.Windows.Forms.Button QueueRenameButton;
     }
 }

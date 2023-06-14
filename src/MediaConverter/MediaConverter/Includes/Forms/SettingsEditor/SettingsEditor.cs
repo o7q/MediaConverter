@@ -5,7 +5,7 @@ using static MediaConverter.Tools.Forms;
 using static MediaConverter.Tools.Managers.ConfigManager;
 using static MediaConverter.Data.Structure.ConfigStructure;
 
-namespace MediaConverter
+namespace MediaConverter.Forms
 {
     public partial class SettingsEditor : Form
     {
@@ -20,8 +20,11 @@ namespace MediaConverter
 
         private void SettingsEditor_Load(object sender, EventArgs e)
         {
-            ThemeColorPanel.BackColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
-            SaveButton.ForeColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
+            var colors = CalculateThemeButtonColors(config);
+            ThemeColorPanel.BackColor = colors.Item1;
+            SaveButton.ForeColor = colors.Item1;
+            SaveButton.BackColor = colors.Item2;
+            SaveButton.FlatAppearance.BorderColor = colors.Item3;
 
             #region loadTooltips
             // bind tooltips
@@ -72,19 +75,25 @@ namespace MediaConverter
                 config.THEME_COLOR_G = g;
                 config.THEME_COLOR_B = b;
 
-                ThemeColorPanel.BackColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
-                SaveButton.ForeColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
+                var colors = CalculateThemeButtonColors(config);
+                ThemeColorPanel.BackColor = colors.Item1;
+                SaveButton.ForeColor = colors.Item1;
+                SaveButton.BackColor = colors.Item2;
+                SaveButton.FlatAppearance.BorderColor = colors.Item3;
             }
         }
 
         private void ThemeColorResetButton_Click(object sender, EventArgs e)
         {
-            config.THEME_COLOR_R = 30;
-            config.THEME_COLOR_G = 130;
-            config.THEME_COLOR_B = 230;
+            config.THEME_COLOR_R = 0;
+            config.THEME_COLOR_G = 150;
+            config.THEME_COLOR_B = 0;
 
-            ThemeColorPanel.BackColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
-            SaveButton.ForeColor = Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B);
+            var colors = CalculateThemeButtonColors(config);
+            ThemeColorPanel.BackColor = colors.Item1;
+            SaveButton.ForeColor = colors.Item1;
+            SaveButton.BackColor = colors.Item2;
+            SaveButton.FlatAppearance.BorderColor = colors.Item3;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -99,6 +108,11 @@ namespace MediaConverter
         }
 
         private void TitlebarPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            MoveForm(Handle, e);
+        }
+
+        private void IconPictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             MoveForm(Handle, e);
         }

@@ -4,6 +4,8 @@
     {
         public struct MediaItemData
         {
+            public string ITEM_IDENTIFIER;
+
             public string INPUT_FILE_PATH;
             public string INPUT_FILE;
             public string INPUT_FILE_NAME;

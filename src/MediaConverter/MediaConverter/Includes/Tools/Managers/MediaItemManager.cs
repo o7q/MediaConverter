@@ -18,17 +18,17 @@ namespace MediaConverter.Tools.Managers
                 sb.Append("\n");
             }
             sb.Length--;
-            File.WriteAllText("MediaConverter\\queue\\" + mediaItem + ".mc_item", sb.ToString());
+            File.WriteAllText("MediaConverter\\queue\\" + mediaItem + ".mcitem", sb.ToString());
         }
 
         public static MediaItemData ReadMediaItem(string mediaItem)
         {
             MediaItemData mediaData = new MediaItemData();
 
-            if (File.Exists("MediaConverter\\queue\\" + mediaItem + ".mc_item") == false) return mediaData;
+            if (File.Exists("MediaConverter\\queue\\" + mediaItem + ".mcitem") == false) return mediaData;
 
             // load data from file
-            string mediaItemFile = File.ReadAllText("MediaConverter\\queue\\" + mediaItem + ".mc_item");
+            string mediaItemFile = File.ReadAllText("MediaConverter\\queue\\" + mediaItem + ".mcitem");
             string[] mediaItemSetting = mediaItemFile.Split('\n');
 
             for (int i = 0; i < mediaItemSetting.Length; i++)
@@ -39,6 +39,8 @@ namespace MediaConverter.Tools.Managers
                 {
                     switch (mediaItemSettingPair[0])
                     {
+                        case "ITEM_IDENTIFIER": mediaData.ITEM_IDENTIFIER = mediaItemSettingPair[1]; break;
+
                         case "INPUT_FILE_PATH": mediaData.INPUT_FILE_PATH = mediaItemSettingPair[1]; break;
                         case "INPUT_FILE": mediaData.INPUT_FILE = mediaItemSettingPair[1]; break;
                         case "INPUT_FILE_NAME": mediaData.INPUT_FILE_NAME = mediaItemSettingPair[1]; break;

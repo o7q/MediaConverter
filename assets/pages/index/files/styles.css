@@ -35,27 +35,27 @@ body
 
 .headProgram
 {
-    border: 3px solid #282928;
-    border-radius: 3px;
+    border: 2px solid #282928;
+    border-radius: 4px;
 }
 
 .downloadButton
 {
     padding: 10px 25px;
-    background-image: linear-gradient(#051526, #0A2B4C);
-    border: 3px solid #1E82E6;
+    background-image: linear-gradient(#001400, #003200);
+    border: 3px solid #00C800;
     border-radius: 10px;
     font-family: KarrikRegular;
     font-size: 30px;
-    color: #1E82E6;
+    color: #00C800;
     text-decoration: none;
     transition: all 0.15s ease-in-out;
 }
 .downloadButton:hover
 {
-    color: #61A7ED;
-    border: 3px solid #61A7ED;
-    box-shadow: 0 5px 15px #61A7ED30;
+    color: #40D640;
+    border: 3px solid #40D640;
+    box-shadow: 0 5px 15px #40D64030;
 }
 
 .downloadButtonAll
@@ -63,8 +63,13 @@ body
     position: relative;
     top: 15px;
     font-family: KarrikRegular;
-    color: #1868B8;
+    color: #009600;
     text-decoration: none;
+    transition: all 0.15s ease-in-out;
+}
+.downloadButtonAll:hover
+{
+    color: #00AF00;
 }
 
 .copyrightText

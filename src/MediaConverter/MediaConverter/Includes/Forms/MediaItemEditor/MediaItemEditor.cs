@@ -6,17 +6,18 @@ using static MediaConverter.Tools.Forms;
 using static MediaConverter.Data.Structure.MediaStructure;
 using static MediaConverter.Tools.Managers.ConvertManager;
 using static MediaConverter.Tools.Managers.MediaItemManager;
+using static MediaConverter.Data.Structure.ConfigStructure;
 
-namespace MediaConverter
+namespace MediaConverter.Forms
 {
     public partial class MediaItemEditor : Form
     {
         public MediaItemData[] mediaSettings { get; set; }
         bool isBulk = false;
 
-        Color themeColor;
+        ConfigBase config = new ConfigBase();
 
-        public MediaItemEditor(MediaItemData[] mediaSettings_, Color themeColor_)
+        public MediaItemEditor(MediaItemData[] mediaSettings_, ConfigBase config_)
         {
             InitializeComponent();
 
@@ -33,14 +34,14 @@ namespace MediaConverter
                     mediaSettings[i] = mediaSettings_[i];
             }
 
-            themeColor = themeColor_;
+            config = config_;
         }
 
         private void MediaItemEditor_Load(object sender, EventArgs e)
         {
             // OUTPUT SETTINGS
-            OutputFilePathTextBox.Text = isBulk ? "" : mediaSettings[0].OUTPUT_FILE_PATH;
             OutputFileNameTextBox.Text = isBulk ? "%FILE_NAME%" : mediaSettings[0].OUTPUT_FILE_NAME;
+            OutputFilePathTextBox.Text = isBulk ? "" : mediaSettings[0].OUTPUT_FILE_PATH;
             //
 
             // CODEC SETTINGS
@@ -67,8 +68,14 @@ namespace MediaConverter
             OutputTimeframeEndTextBox.Text = isBulk ? "0:10" : mediaSettings[0].OUTPUT_TIMEFRAME_END;
             //
 
-            SaveButton.ForeColor = themeColor;
-            PreviewButton.ForeColor = Color.FromArgb(255, (int)(themeColor.R / 1.25), (int)(themeColor.G / 1.25), (int)(themeColor.B / 1.25));
+            var colors = CalculateThemeButtonColors(config);
+            SaveButton.ForeColor = colors.Item1;
+            SaveButton.BackColor = colors.Item2;
+            SaveButton.FlatAppearance.BorderColor = colors.Item3;
+
+            PreviewButton.ForeColor = Color.FromArgb(255, (int)(colors.Item1.R / 1.25), (int)(colors.Item1.G / 1.25), (int)(colors.Item1.B / 1.25));
+            PreviewButton.BackColor = Color.FromArgb(255, (int)(colors.Item2.R / 1.25), (int)(colors.Item2.G / 1.25), (int)(colors.Item2.B / 1.25));
+            PreviewButton.FlatAppearance.BorderColor = Color.FromArgb(255, (int)(colors.Item3.R / 1.25), (int)(colors.Item3.G / 1.25), (int)(colors.Item3.B / 1.25));
 
             #region loadTooltips
             // bind tooltips
@@ -316,7 +323,7 @@ namespace MediaConverter
                 for (int i = 0; i < mediaSettings.Length; i++)
                 {
                     ApplySettings(i);
-                    WriteMediaItem(mediaSettings[i].INPUT_FILE, mediaSettings[i]);
+                    WriteMediaItem(mediaSettings[i].ITEM_IDENTIFIER, mediaSettings[i]);
                 }
 
                 Close();
@@ -324,7 +331,7 @@ namespace MediaConverter
             else
             {
                 ApplySettings(0);
-                WriteMediaItem(mediaSettings[0].INPUT_FILE, mediaSettings[0]);
+                WriteMediaItem(mediaSettings[0].ITEM_IDENTIFIER, mediaSettings[0]);
                 Close();
             }
         }
@@ -332,8 +339,8 @@ namespace MediaConverter
         private void PreviewButton_Click(object sender, EventArgs e)
         {
             ApplySettings(0);
-            WriteMediaItem(mediaSettings[0].INPUT_FILE, mediaSettings[0]);
-            string[] mediaItem = { mediaSettings[0].INPUT_FILE };
+            WriteMediaItem(mediaSettings[0].ITEM_IDENTIFIER, mediaSettings[0]);
+            string[] mediaItem = { mediaSettings[0].ITEM_IDENTIFIER };
             ConvertMediaItems(mediaItem, true);
         }
 
@@ -347,7 +354,10 @@ namespace MediaConverter
             // OUTPUT SETTINGS
             mediaSettings[itemIndex].OUTPUT_FILE_PATH = OutputFilePathTextBox.Text;
             if (isBulk == true)
-                mediaSettings[itemIndex].OUTPUT_FILE_NAME = OutputFileNameTextBox.Text == "%FILE_NAME%" ? mediaSettings[itemIndex].INPUT_FILE_NAME : OutputFileNameTextBox.Text + "_" + (itemIndex + 1).ToString();
+            {
+                string bulkNumberedFileName = itemIndex == 0 ? OutputFileNameTextBox.Text : OutputFileNameTextBox.Text + "_" + itemIndex;
+                mediaSettings[itemIndex].OUTPUT_FILE_NAME = OutputFileNameTextBox.Text == "%FILE_NAME%" ? mediaSettings[itemIndex].INPUT_FILE_NAME : bulkNumberedFileName;
+            }
             else
                 mediaSettings[itemIndex].OUTPUT_FILE_NAME = OutputFileNameTextBox.Text;
             //
@@ -408,25 +418,30 @@ namespace MediaConverter
 
         private void OutputFormatPresetComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
-            DrawComboBox(sender, e, Color.FromArgb(255, 30, 30, 30), Color.FromArgb(255, 225, 225, 225), Color.FromArgb(255, themeColor.R, themeColor.G, themeColor.B));
+            DrawComboBox(sender, e, Color.FromArgb(255, 30, 30, 30), Color.FromArgb(255, 225, 225, 225), Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B));
         }
 
         private void OutputFormatComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
-            DrawComboBox(sender, e, Color.FromArgb(255, 30, 30, 30), Color.FromArgb(255, 225, 225, 225), Color.FromArgb(255, themeColor.R, themeColor.G, themeColor.B));
+            DrawComboBox(sender, e, Color.FromArgb(255, 30, 30, 30), Color.FromArgb(255, 225, 225, 225), Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B));
         }
 
         private void OutputVideoCodecComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
-            DrawComboBox(sender, e, Color.FromArgb(255, 30, 30, 30), Color.FromArgb(255, 225, 225, 225), Color.FromArgb(255, themeColor.R, themeColor.G, themeColor.B));
+            DrawComboBox(sender, e, Color.FromArgb(255, 30, 30, 30), Color.FromArgb(255, 225, 225, 225), Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B));
         }
 
         private void OutputAudioCodecComboBox_DrawItem(object sender, DrawItemEventArgs e)
         {
-            DrawComboBox(sender, e, Color.FromArgb(255, 30, 30, 30), Color.FromArgb(255, 225, 225, 225), Color.FromArgb(255, themeColor.R, themeColor.G, themeColor.B));
+            DrawComboBox(sender, e, Color.FromArgb(255, 30, 30, 30), Color.FromArgb(255, 225, 225, 225), Color.FromArgb(255, config.THEME_COLOR_R, config.THEME_COLOR_G, config.THEME_COLOR_B));
         }
 
         private void TitlebarPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            MoveForm(Handle, e);
+        }
+
+        private void IconPictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             MoveForm(Handle, e);
         }
