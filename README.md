@@ -1,5 +1,9 @@
 <img src="assets/images/banner.png">
 
+![Total Downloads](https://img.shields.io/github/downloads/o7q/MediaConverter/total?logo=github&label=Total%20Downloads&color=%232fd653)
+![Code Quality](https://img.shields.io/codefactor/grade/github/o7q/MediaConverter/main?logo=github&label=Code%20Quality&color=%2315bf87)
+![Code Size](https://img.shields.io/github/languages/code-size/o7q/MediaConverter?logo=github&label=Code%20Size&color=%23b65cff)
+
 # [<b>>> Download Latest</b>](https://github.com/o7q/MediaConverter/releases/download/v1.1.0.0/MediaConverter.v1.1.0.0.zip)
 ### Welcome! MediaConverter is a simple, lightning-fast, GUI based tool that removes the hassle of using FFmpeg through a command-line.
 
