@@ -2,7 +2,7 @@
 using System.Text;
 using static MediaConverter.Data.Structure.ConfigStructure;
 
-namespace MediaConverter.Tools.Managers
+namespace MediaConverter.Managers
 {
     public static class ConfigManager
     {

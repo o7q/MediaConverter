@@ -3,9 +3,9 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using static MediaConverter.Tools.Forms;
+using static MediaConverter.Managers.ConvertManager;
+using static MediaConverter.Managers.MediaItemManager;
 using static MediaConverter.Data.Structure.MediaStructure;
-using static MediaConverter.Tools.Managers.ConvertManager;
-using static MediaConverter.Tools.Managers.MediaItemManager;
 using static MediaConverter.Data.Structure.ConfigStructure;
 
 namespace MediaConverter.Forms

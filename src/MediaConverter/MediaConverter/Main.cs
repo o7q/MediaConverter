@@ -8,13 +8,13 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using MediaConverter.Forms;
 using static System.Windows.Forms.ListBox;
+using static MediaConverter.Tools.Forms;
 using static MediaConverter.Data.Storage;
+using static MediaConverter.Managers.ConfigManager;
+using static MediaConverter.Managers.ConvertManager;
+using static MediaConverter.Managers.MediaItemManager;
 using static MediaConverter.Data.Structure.MediaStructure;
 using static MediaConverter.Data.Structure.ConfigStructure;
-using static MediaConverter.Tools.Forms;
-using static MediaConverter.Tools.Managers.ConfigManager;
-using static MediaConverter.Tools.Managers.ConvertManager;
-using static MediaConverter.Tools.Managers.MediaItemManager;
 
 namespace MediaConverter
 {

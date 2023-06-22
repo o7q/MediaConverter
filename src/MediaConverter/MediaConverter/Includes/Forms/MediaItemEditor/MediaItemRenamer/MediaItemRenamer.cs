@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using static MediaConverter.Tools.Forms;
-using static MediaConverter.Tools.Managers.MediaItemManager;
+using static MediaConverter.Managers.MediaItemManager;
 using static MediaConverter.Data.Structure.MediaStructure;
 using static MediaConverter.Data.Structure.ConfigStructure;
 

@@ -3,7 +3,7 @@ using System.Text;
 using static System.Windows.Forms.ListBox;
 using static MediaConverter.Data.Structure.MediaStructure;
 
-namespace MediaConverter.Tools.Managers
+namespace MediaConverter.Managers
 {
     public static class MediaItemManager
     {

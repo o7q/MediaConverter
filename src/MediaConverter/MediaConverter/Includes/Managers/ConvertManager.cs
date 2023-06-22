@@ -3,9 +3,9 @@ using System.Linq;
 using System.Diagnostics;
 using static MediaConverter.Data.Storage;
 using static MediaConverter.Data.Structure.MediaStructure;
-using static MediaConverter.Tools.Managers.MediaItemManager;
+using static MediaConverter.Managers.MediaItemManager;
 
-namespace MediaConverter.Tools.Managers
+namespace MediaConverter.Managers
 {
     public static class ConvertManager
     {
@@ -36,7 +36,8 @@ namespace MediaConverter.Tools.Managers
         {
             MediaItemData mediaItem = ReadMediaItem(item.ToString());
 
-            scriptBraid += "\ntitle MediaConverter " + VERSION + "  [" + currentMediaItem + "/" + totalMediaItems + "]  :  " + item + "\n" +
+            string previewTag = isPreview ? "  (PREVIEW)" : "";
+            scriptBraid += "\ntitle MediaConverter " + VERSION + "  [" + currentMediaItem + "/" + totalMediaItems + "]  :  " + item + previewTag + "\n" +
                            "echo.\n" +
                            "echo.";
 

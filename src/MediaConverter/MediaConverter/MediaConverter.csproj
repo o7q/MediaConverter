@@ -58,10 +58,10 @@
     <Compile Include="Includes\Forms\MediaItemEditor\MediaItemRenamer\MediaItemRenamer.Designer.cs">
       <DependentUpon>MediaItemRenamer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Includes\Tools\Managers\ConfigManager.cs" />
-    <Compile Include="Includes\Tools\Managers\ConvertManager.cs" />
+    <Compile Include="Includes\Managers\ConfigManager.cs" />
+    <Compile Include="Includes\Managers\ConvertManager.cs" />
     <Compile Include="Includes\Tools\Forms.cs" />
-    <Compile Include="Includes\Tools\Managers\MediaItemManager.cs" />
+    <Compile Include="Includes\Managers\MediaItemManager.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

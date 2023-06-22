@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using static MediaConverter.Tools.Forms;
-using static MediaConverter.Tools.Managers.ConfigManager;
+using static MediaConverter.Managers.ConfigManager;
 using static MediaConverter.Data.Structure.ConfigStructure;
 
 namespace MediaConverter.Forms
