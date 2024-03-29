@@ -118,30 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAABDhJREFUeF7tnU1r1FAUhvsz5lfVhW5ciSDqRkF06daN2I8Zaz+nIlL3CuJKXYg/
-        QHGrCOZGaCczoyK48POcNtPp3CbFmeQmN8nzwMsBm3tizn3Pzc1krHMAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAUF++fL7TEs2r9oKH23lolE9zx6cBX4kn6q8jzcenAV/pBds3EyYuF/WC7kuJrAI+
-        s/tp5609cTmLVcBnXBtgEHbOxqcCH0kyQGS2Hu0FD9rTKjIbw4RcRiK3AV9JWQFmWrZ1nJUnUz4ogCIM
-        oCuKRFYBH8nZAC2Z7CdWrkw5wTF5GkDRsVauzDnBIQ4MIKvA+lcrn94GPkpUc1RR9b195W0ApW9WziXk
-        rKwGYVtjPY3gwgA63spXCw3CznWJ9TKBIwO0ekH3jZWzLqrXXsaFARTNYeWshfpm9UJ8ifXAoQH2XzPv
-        BTtPq6q+WftxpCb7knq9ii+xHrgyQB3QOlh1wQBNQutg1QUDNAmtg1UXDNAktA5WXTBAk9A6WHXBAE1C
-        62DVBQM0Ca2DVRcMkAeS//Cr6J7rvGiiNr2g+05i0rFZVN7Hy0UbQHK3huHSZet8jVb8HYpyTFCkASRv
-        axAuX7HOhUSR2bgal6lYijKA5NRl/9iSig4k8/AiLlWxFGgAvdfZ50FjOd13pVKEASSfLP3ta9Y5UKzI
-        bO5KrO8eQPNZ+dGkyul+xbUBJBe7/hMkj5WvJdb3MVBzWbnRpMrrfgUDlCfp/ucSy/2OoUsDSB7Z/N39
-        beVGY5Xb/YpjA9D9KYrM+rLEcrtfcWUAydFK+k4dOlT53a+4MsAwXDydkBeJpPs7EsvvfsWFAWS8dP+9
-        n1ZONJYf3a/kbQAZK8/9CxetfCjWIOzckOhH9ysODMDGL0XxvzH0Z/IVDFCo/Fn6R+RpABknz/2dP1Yu
-        NFbtDUD3p0u/C+HX8q/kZQAZw84/RZHpvpfo3+QreRlgGC6dSciDDuTf0j8iDwPI8Xzmn6LIbPYk+tn9
-        SlYDyLG87z9Z/na/koMB2PilKDJbjyX62/0KBnAqv7tfyWIAOU52/iu/rLFI1Au6zyT63f1KRgPQ/eny
-        v/uVWQ0gx/Dcn6K+Wb0l0f/uVzIYgO5PVzW6X5nFAPJz/XWw36wxSFS5XyY5iwGG4cKphDGN1yBs64uw
-        6ky+Mq0B5Gfa/d+t45Gokv89zrQGoPuTFb8Gr1b3K9MYQP6c9/3pOvG26S1TGoCdf4LiD8Oq1/1KkgGG
-        4eIliTrZE+KNX7L0thiXs3qkrADoPxWZrQ8Sq9n9ivzlWdazqZr3/hFyAWzsZlRkNu9LrG73j9CLwATT
-        qW/Wbkus/uSP0IuJzMba0YtExyX3/B2Jetusz+SP0IuKLw6lq34TDwAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAhTE39w997iMv0OpoiQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="QueueSelectInvertButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO

@@ -59,7 +59,6 @@
             this.VersionLabel = new System.Windows.Forms.Label();
             this.QueueSelectedLabel = new System.Windows.Forms.Label();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.TitlebarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IconPictureBox)).BeginInit();
             this.Menubar1Panel.SuspendLayout();
@@ -230,7 +229,6 @@
             // Menubar2Panel
             // 
             this.Menubar2Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Menubar2Panel.Controls.Add(this.button1);
             this.Menubar2Panel.Controls.Add(this.QueueRenameButton);
             this.Menubar2Panel.Controls.Add(this.SettingsButton);
             this.Menubar2Panel.Controls.Add(this.QueueDeselectAllButton);
@@ -470,19 +468,6 @@
             // 
             this.MainToolTip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.MainToolTip_Draw);
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Khaki;
-            this.button1.Location = new System.Drawing.Point(4, 202);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(20, 20);
-            this.button1.TabIndex = 9;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -541,6 +526,5 @@
         private System.Windows.Forms.Button QueueSelectionMoveUpButton;
         private System.Windows.Forms.Button QueueRefreshButton;
         private System.Windows.Forms.Button QueueRenameButton;
-        private System.Windows.Forms.Button button1;
     }
 }
